@@ -42,5 +42,9 @@ export class RegisterComponent {
     phoneNumber: this.phoneNumber
   })
 
+  register(){
+    console.log("register called");
+  }
+
  
 }
