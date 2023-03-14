@@ -13,6 +13,8 @@ export class RegisterComponent {
 
   }
 
+  inSubmission = false;
+
   name= new FormControl('', [
     Validators.required,
     Validators.minLength(3)
@@ -56,6 +58,7 @@ export class RegisterComponent {
     this.showAlert = true;
     this.alertMsg = 'Please wait while your account is being created.';
     this.alertColor = 'blue';
+    this.inSubmission = true;
 
     const {email, password} = this.registerForm.value;
     try {
@@ -68,6 +71,7 @@ export class RegisterComponent {
 
     this.alertMsg = 'An expected error occurred! Please try again later';
     this.alertColor = 'red';
+    this.inSubmission = false;
 
     return
   }
