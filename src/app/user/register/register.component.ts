@@ -58,10 +58,23 @@ export class RegisterComponent {
     this.alertColor = 'blue';
 
     const {email, password} = this.registerForm.value;
+    try {
     const userCred = await this.auth.createUserWithEmailAndPassword(
       email as string, password as string
     )
+    console.log(userCred);
+  } catch(e){
+    console.error(e);
+
+    this.alertMsg = 'An expected error occurred! Please try again later';
+    this.alertColor = 'red';
+
+    return
   }
+
+  this.alertMsg = 'Success! Your account has been created.';
+  this.alertColor = 'green';  
+}
 
  
 }
