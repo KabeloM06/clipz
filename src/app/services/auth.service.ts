@@ -15,6 +15,7 @@ export class AuthService {
     private db: AngularFirestore
   ) { 
     this.usersCollection = db.collection('users')
+    auth.user.subscribe(console.log)
   }
 
   public async createUser(userData: IUser){
