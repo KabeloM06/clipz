@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 
 import IUser from 'src/app/models/user.model';
 import { RegisterValidators } from '../validators/register-validators';
+import { EmailTaken } from '../validators/email-taken';
 
 
 @Component({
@@ -13,7 +14,8 @@ import { RegisterValidators } from '../validators/register-validators';
 })
 export class RegisterComponent {
   constructor(
-    private auth: AuthService
+    private auth: AuthService,
+    private emailTaken: EmailTaken
     ) {
 
   }
@@ -27,7 +29,7 @@ export class RegisterComponent {
   email= new FormControl('',[
     Validators.required,
     Validators.email
-  ])
+  ], [this.emailTaken.validate])
   age= new FormControl('', [
     Validators.required,
     Validators.min(18),
