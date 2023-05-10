@@ -32,7 +32,7 @@ export class AuthService {
     this.router.events.pipe(
       filter(e => e instanceof NavigationEnd),
       map(e => this.route.firstChild),
-      switchMap(route => route?.data ?? of({}))
+      switchMap(route => route?.data ?? of()) //removed {} because authOnly does not exist in {}
     ).subscribe(data => {
       this.redirect = data['authOnly'] ?? false
     })
